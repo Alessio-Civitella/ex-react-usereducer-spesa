@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lista Prodotti</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React e ReactDOM da CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Codice React -->
+  <script type="text/babel">
+    const products = [
+      { name: 'Mela', price: 0.5 },
+      { name: 'Pane', price: 1.2 },
+      { name: 'Latte', price: 1.0 },
+      { name: 'Pasta', price: 0.7 },
+    ];
+
+    function ProductList() {
+      return (
+        <div className="container">
+          <h1>Lista Prodotti</h1>
+          {products.map((product, index) => (
+            <div key={index} className="product">
+              <span>{product.name}</span>
+              <span>€ {product.price.toFixed(2)}</span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<ProductList />);
+  </script>
+</body>
+</html>
